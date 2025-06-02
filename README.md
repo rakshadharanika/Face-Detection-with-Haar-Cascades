@@ -52,4 +52,36 @@ iv) Perform face detection with label in real-time video from webcam.
 - Step 3: Apply `detect_face()` function on each frame  
 - Step 4: Display the video frame with rectangles around detected faces  
 - Step 5: Exit loop and close windows when ESC key (key code 27) is pressed  
-- Step 6: Release video capture and destroy all OpenCV windows  
+- Step 6: Release video capture and destroy all OpenCV windows 
+### Program:
+#### Name : V Raksha dharanika
+#### Reg  : 212223230167
+```py
+import cv2
+import matplotlib.pyplot as plt
+
+img = cv2.imread('image.jpg')
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+faces = face_cascade.detectMultiScale(gray, 1.1, 5)
+
+for (x, y, w, h) in faces:
+    cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+
+img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+# Save plot as image
+plt.imshow(img_rgb)
+plt.axis('off')
+plt.savefig("output_face_detection.png", bbox_inches='tight')  # <--- Important
+plt.show()
+
+
+
+``` 
+### 0utput:
+![image](https://github.com/user-attachments/assets/a1073072-c9de-4c30-b1d5-bc19e9243f78)
+
+### Result:
+Thus , to write a Python program using OpenCV to perform the following image manipulations performed succesfully.
